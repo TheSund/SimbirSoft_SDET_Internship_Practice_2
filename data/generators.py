@@ -4,6 +4,7 @@ from faker import Faker
 
 faker = Faker("ru_RU")
 
+
 def generate_entity_data():
     return {
         "title": faker.sentence(nb_words=3),

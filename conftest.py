@@ -11,6 +11,7 @@ from models.entity import Addition, EntityCreate
 def api_client():
     return ApiClient(base_url=BASE_URL)
 
+
 @pytest.fixture(scope='function')
 def created_entity(api_client):
     data = generate_entity_data()
@@ -35,6 +36,7 @@ def created_entity(api_client):
     if delete_resp.status_code not in (204, 500):
         raise AssertionError(f"Ошибка при удалении: {delete_resp.status_code}")
 
+
 def pytest_configure():
     print("\n>>> Очистка базы данных перед тестами <<<")
     conn = psycopg2.connect(
@@ -48,6 +50,7 @@ def pytest_configure():
     cur = conn.cursor()
     cur.execute("TRUNCATE TABLE additions, entities RESTART IDENTITY CASCADE;")
     conn.close()
+
 
 def pytest_unconfigure():
     print("\n>>> Очистка базы после тестов <<<")

@@ -16,6 +16,6 @@ def test_get_all_entities(api_client, created_entity):
     assert len(data) > 0
 
     try:
-        entity = EntityCreate(**data[0])
+        EntityCreate(**data[0])
     except Exception as e:
         raise AssertionError(f'Структура ответа не соответствует данным: {e}')

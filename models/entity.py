@@ -17,5 +17,6 @@ class EntityCreate(BaseModel):
     def build(self) -> dict:
         return self.model_dump()
 
+
 class Entity(EntityCreate):
     id: int
