@@ -1,8 +1,0 @@
-TITLE = "Новая сущность"
-VERIFIED = True
-IMPORTANT_NUMBERS = [1, 2, 3]
-ADDITIONAL_INFO = 'Тестовые данные'
-ADDITIONAL_NUMBER = 777
-
-UPDATED_ADDITIONAL_INFO = "Обновленные данные"
-UPDATED_VERIFIED = False

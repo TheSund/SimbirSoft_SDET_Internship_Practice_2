@@ -1,4 +1,5 @@
 import requests
+
 from data.data_api import (
     CREATE,
     DELETE,
@@ -6,6 +7,7 @@ from data.data_api import (
     GET_ALL,
     PATCH
 )
+
 
 class ApiClient:
     def __init__(self, base_url):

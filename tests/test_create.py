@@ -1,30 +1,25 @@
 import pytest
 
-from data.constants import (
-    TITLE,
-    VERIFIED,
-    IMPORTANT_NUMBERS,
-    ADDITIONAL_INFO,
-    ADDITIONAL_NUMBER
-)
+from data.generators import generate_entity_data
 from models.entity import Addition, EntityCreate
 
 
 @pytest.mark.order(1)
 def test_create_entity(api_client):
-    addition_obj = Addition(
-        additional_info = ADDITIONAL_INFO,
-        additional_number = ADDITIONAL_NUMBER
-    )
+    data = generate_entity_data()
 
+    addition = Addition(
+        additional_info=data["addition"]["additional_info"],
+        additional_number=data["addition"]["additional_number"],
+    )
     new_entity = EntityCreate(
-        title = TITLE,
-        verified = VERIFIED,
-        important_numbers = IMPORTANT_NUMBERS,
-        addition = addition_obj
+        title=data["title"],
+        verified=data["verified"],
+        important_numbers=data["important_numbers"],
+        addition=addition,
     )
 
-    response = api_client.create(data=new_entity.build())
+    response = api_client.create(new_entity.build())
 
     assert response.status_code == 200, f"Ожидался статус 200, но получен {response.status_code}"
 
