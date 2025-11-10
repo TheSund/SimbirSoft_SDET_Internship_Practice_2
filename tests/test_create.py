@@ -1,5 +1,3 @@
-import pytest
-
 from data.generators import generate_entity_data
 from models.entity import Addition, EntityCreate
 

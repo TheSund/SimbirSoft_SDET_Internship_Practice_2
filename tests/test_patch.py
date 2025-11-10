@@ -1,4 +1,3 @@
-import pytest
 from models.entity import Addition, EntityCreate
 
 
