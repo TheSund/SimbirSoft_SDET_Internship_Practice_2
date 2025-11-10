@@ -5,7 +5,6 @@ import pytest
 from models.entity import EntityCreate
 
 
-@pytest.mark.order(4)
 def test_get_all_entities(api_client, created_entity):
     response = api_client.get_all()
 

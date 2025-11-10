@@ -4,7 +4,6 @@ from data.generators import generate_entity_data
 from models.entity import Addition, EntityCreate
 
 
-@pytest.mark.order(1)
 def test_create_entity(api_client):
     data = generate_entity_data()
 

@@ -2,7 +2,6 @@ import pytest
 from models.entity import Entity
 
 
-@pytest.mark.order(2)
 def test_get_entity(api_client, created_entity):
     entity_id, expected_data = created_entity
     response = api_client.get(entity_id)

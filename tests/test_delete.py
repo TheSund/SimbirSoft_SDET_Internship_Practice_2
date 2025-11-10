@@ -1,7 +1,6 @@
 import pytest
 
 
-@pytest.mark.order(5)
 def test_delete_entity(api_client, created_entity):
     entity_id, _ = created_entity
     response = api_client.delete(entity_id)

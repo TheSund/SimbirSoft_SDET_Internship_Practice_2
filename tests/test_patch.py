@@ -2,7 +2,6 @@ import pytest
 from models.entity import Addition, EntityCreate
 
 
-@pytest.mark.order(3)
 def test_patch_entity(api_client, created_entity):
     entity_id, existing_data = created_entity
 
