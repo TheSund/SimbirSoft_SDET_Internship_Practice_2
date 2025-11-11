@@ -5,7 +5,13 @@ from faker import Faker
 faker = Faker("ru_RU")
 
 
-def generate_entity_data():
+def generate_entity_data() -> dict:
+    """Генерирует случайные данные для использования сущностями.
+
+    Функция генерирует:
+    случайное название из трех слов, случайная поставленная метка 'verified',
+    важные числа в виде списка из трех чисел от 1 до 99, дополнительная информация в виде текста длиной до 50 символов,
+    случайное дополнительное число в диапазоне от 1 до 999."""
     return {
         "title": faker.sentence(nb_words=3),
         "verified": random.choice([True, False]),

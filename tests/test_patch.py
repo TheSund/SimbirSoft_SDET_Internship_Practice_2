@@ -5,7 +5,7 @@ def test_patch_entity(api_client, created_entity):
     entity_id, existing_data = created_entity
 
     updated_verified = not existing_data["verified"]
-    updated_add_info = "ОБНОВЛЕНО"
+    updated_add_info = 'ОБНОВЛЕНО'
 
     addition = Addition(
         additional_info=updated_add_info,
@@ -19,4 +19,4 @@ def test_patch_entity(api_client, created_entity):
     )
 
     response = api_client.patch(entity_id, updated_data.build())
-    assert response.status_code == 204, f"Ошибка при обновлении сущности: {response.status_code}, {response.text}"
+    assert response.status_code == 204, f'Ошибка при обновлении сущности: {response.status_code}, {response.text}'

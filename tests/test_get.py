@@ -5,7 +5,7 @@ def test_get_entity(api_client, created_entity):
     entity_id, expected_data = created_entity
     response = api_client.get(entity_id)
 
-    assert response.status_code == 200, f"Ожидался статус 200, но получен {response.status_code}"
+    assert response.status_code == 200, f'Ожидался статус 200, но получен {response.status_code}'
 
     try:
         parsed = Entity(**response.json())

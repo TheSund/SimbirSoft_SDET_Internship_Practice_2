@@ -9,11 +9,14 @@ from models.entity import Addition, EntityCreate
 
 @pytest.fixture(scope='function')
 def api_client():
+    """Фикстура для создания экземпляр клиента API c указанным базовым URL для использования тестами."""
     return ApiClient(base_url=BASE_URL)
 
 
 @pytest.fixture(scope='function')
 def created_entity(api_client):
+    """Фикстура для создания сущности через API со случайными данными и удаления её после теста.
+    Возвращает ID созданной сущности и её исходные данные для использования в тестах. После теста сущность удаляется."""
     data = generate_entity_data()
     addition = Addition(
         additional_info=data["addition"]["additional_info"],
@@ -38,6 +41,8 @@ def created_entity(api_client):
 
 
 def pytest_configure():
+    """Подключается к базе данных до начала тестирования, очищает таблицы 'entities' и 'additions'
+    и сбрасывает автоинкремент, обеспечивая чистое состояние базы данных для тестов."""
     print("\n>>> Очистка базы данных перед тестами <<<")
     conn = psycopg2.connect(
         dbname="test",
@@ -53,6 +58,8 @@ def pytest_configure():
 
 
 def pytest_unconfigure():
+    """Подключается к базе данных после тестирования, очищает таблицы 'entities' и 'additions'
+        и сбрасывает автоинкремент, очищая все внесенные тестами изменения."""
     print("\n>>> Очистка базы после тестов <<<")
     conn = psycopg2.connect(
         dbname="test",

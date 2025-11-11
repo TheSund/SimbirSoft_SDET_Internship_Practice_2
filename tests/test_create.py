@@ -18,7 +18,7 @@ def test_create_entity(api_client):
 
     response = api_client.create(new_entity.build())
 
-    assert response.status_code == 200, f"Ожидался статус 200, но получен {response.status_code}"
+    assert response.status_code == 200, f'Ожидался статус 200, но получен {response.status_code}'
 
     response_data = response.json()
     assert isinstance(response_data, int), f'Ответ {response_data} не является ID сущности'
