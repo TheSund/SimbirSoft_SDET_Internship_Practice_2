@@ -1,12 +1,13 @@
 import allure
 
+from api.api_client import ApiClient
 from models.entity import Entity
 
 
 @allure.parent_suite('API Service Testing')
 @allure.suite('Entity List Testing')
 @allure.title('Getting entity data')
-def test_get_entity(api_client, created_entity):
+def test_get_entity(api_client: ApiClient, created_entity: tuple[int, dict]) -> None:
     entity_id, expected_data = created_entity
     response = api_client.get(entity_id)
 

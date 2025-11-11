@@ -1,12 +1,13 @@
 import allure
 
+from api.api_client import ApiClient
 from models.entity import Addition, EntityCreate
 
 
 @allure.parent_suite('API Service Testing')
 @allure.suite('Entity List Testing')
 @allure.title('Updating an entity')
-def test_patch_entity(api_client, created_entity):
+def test_patch_entity(api_client: ApiClient, created_entity: tuple[int, dict]) -> None:
     entity_id, existing_data = created_entity
 
     updated_verified = not existing_data["verified"]

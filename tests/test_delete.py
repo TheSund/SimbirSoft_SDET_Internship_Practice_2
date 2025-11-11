@@ -1,10 +1,12 @@
 import allure
 
+from api.api_client import ApiClient
+
 
 @allure.parent_suite('API Service Testing')
 @allure.suite('Entity List Testing')
 @allure.title('Deleting an entity')
-def test_delete_entity(api_client, created_entity):
+def test_delete_entity(api_client: ApiClient, created_entity: tuple[int, dict]) -> None:
     entity_id, _ = created_entity
     response = api_client.delete(entity_id)
     with allure.step('Проверка успешности запроса на удаление'):

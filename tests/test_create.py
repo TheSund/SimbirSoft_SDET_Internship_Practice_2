@@ -1,5 +1,6 @@
 import allure
 
+from api.api_client import ApiClient
 from data.generators import generate_entity_data
 from models.entity import Addition, EntityCreate
 
@@ -7,7 +8,7 @@ from models.entity import Addition, EntityCreate
 @allure.parent_suite('API Service Testing')
 @allure.suite('Entity List Testing')
 @allure.title('Creating an entity')
-def test_create_entity(api_client):
+def test_create_entity(api_client: ApiClient) -> None:
     data = generate_entity_data()
 
     addition = Addition(
