@@ -1,6 +1,11 @@
+import allure
+
 from models.entity import Addition, EntityCreate
 
 
+@allure.parent_suite('API Service Testing')
+@allure.suite('Entity List Testing')
+@allure.title('Updating an entity')
 def test_patch_entity(api_client, created_entity):
     entity_id, existing_data = created_entity
 
@@ -18,5 +23,6 @@ def test_patch_entity(api_client, created_entity):
         addition=addition,
     )
 
-    response = api_client.patch(entity_id, updated_data.build())
-    assert response.status_code == 204, f'Ошибка при обновлении сущности: {response.status_code}, {response.text}'
+    with allure.step('Проверка успешности запроса на обновление сущности'):
+        response = api_client.patch(entity_id, updated_data.build())
+        assert response.status_code == 204, f'Ошибка при обновлении сущности: {response.status_code}, {response.text}'

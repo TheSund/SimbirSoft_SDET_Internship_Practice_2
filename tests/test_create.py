@@ -1,7 +1,12 @@
+import allure
+
 from data.generators import generate_entity_data
 from models.entity import Addition, EntityCreate
 
 
+@allure.parent_suite('API Service Testing')
+@allure.suite('Entity List Testing')
+@allure.title('Creating an entity')
 def test_create_entity(api_client):
     data = generate_entity_data()
 
@@ -18,7 +23,7 @@ def test_create_entity(api_client):
 
     response = api_client.create(new_entity.build())
 
-    assert response.status_code == 200, f'Ожидался статус 200, но получен {response.status_code}'
-
-    response_data = response.json()
-    assert isinstance(response_data, int), f'Ответ {response_data} не является ID сущности'
+    with allure.step('Проверка успешного создания сущности'):
+        assert response.status_code == 200, f'Ожидался статус 200, но получен {response.status_code}'
+        response_data = response.json()
+        assert isinstance(response_data, int), f'Ответ {response_data} не является ID сущности'
